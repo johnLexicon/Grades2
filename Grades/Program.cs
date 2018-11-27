@@ -10,6 +10,7 @@ namespace Grades
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
