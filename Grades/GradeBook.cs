@@ -22,19 +22,25 @@ namespace Grades
             return stats;
         }
 
-        private float GetMaxGrade()
+        private float? GetMaxGrade()
         {
-            return grades.Max<float>();
+            if(grades.Count > 0)
+                return grades.Max<float>();
+            return null;
         }
 
-        private float GetMinGrade()
+        private float? GetMinGrade()
         {
-            return grades.Min<float>();
+            if (grades.Count > 0)
+                return grades.Min<float>();
+            return null;
         }
 
-        private float GetAverage()
+        private float? GetAverage()
         {
-            return grades.Average();
+            if (grades.Count > 0)
+                return grades.Average();
+            return null;
         }
 
         public void AddGrade(float gradeValue)
