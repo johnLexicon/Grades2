@@ -36,5 +36,10 @@ namespace Grades
         {
             return grades.Average();
         }
+
+        public void AddGrade(float gradeValue)
+        {
+            grades.Add(gradeValue);
+        }
     }
 }
