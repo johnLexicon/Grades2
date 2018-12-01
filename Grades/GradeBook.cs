@@ -15,10 +15,12 @@ namespace Grades
 
         public GradeStatistics ComputeGrades()
         {
-            var stats = new GradeStatistics();
-            stats.MaxGrade = GetMaxGrade();
-            stats.MinGrade = GetMinGrade();
-            stats.AverageGrade = GetAverage();
+            var stats = new GradeStatistics
+            {
+                MaxGrade = GetMaxGrade(),
+                MinGrade = GetMinGrade(),
+                AverageGrade = GetAverage()
+            };
             return stats;
         }
 
