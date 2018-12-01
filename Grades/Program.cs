@@ -38,6 +38,7 @@ namespace Grades
             Console.WriteLine("Min grade is {0}", stats.MinGrade);
             Console.WriteLine("Average grade is {0}", stats.AverageGrade);
             Console.WriteLine("Letter grade is {0}", stats.LetterGrade);
+            Console.WriteLine("Grade description: {0}", stats.Description);
         }
     }
 }

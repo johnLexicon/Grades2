@@ -34,5 +34,36 @@
                 return letterGrade;
             }
         }
+
+        public string Description
+        {
+            get
+            {
+                if(LetterGrade is null)
+                {
+                    return null;
+                }
+                string description;
+                switch (LetterGrade)
+                {
+                    case "A":
+                        description = "Excellent";
+                        break;
+                    case "B":
+                        description = "Good";
+                        break;
+                    case "C":
+                        description = "Average";
+                        break;
+                    case "D":
+                        description = "Below Average";
+                        break;
+                    default:
+                        description = "Failed";
+                        break;
+                }
+                return description;
+            }
+        }
     }
 }
