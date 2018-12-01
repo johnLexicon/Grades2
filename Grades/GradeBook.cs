@@ -43,7 +43,14 @@ namespace Grades
                 {
                     if(_name != value)
                     {
-                        NameChanged(_name, value);
+
+                        var args = new NameChangedEventArgs
+                        {
+                            ExistingName = _name,
+                            NewName = value
+                        };
+
+                        NameChanged(this, args);
                     }
 
                     _name = value;

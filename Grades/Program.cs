@@ -9,19 +9,14 @@ namespace Grades
     class Program
     {
 
-        static void TheStaticMethod(string old, string newName)
-        {
-            Console.WriteLine("The static method");
-        }
-
         static void Main(string[] args)
         {
             GradeBook gradeBook = new GradeBook("The graduator")
             {
-                NameChanged = new NameChangedDelegate((existingName, newName) =>
+                NameChanged = new NameChangedDelegate((gb, eventArgs) =>
                 {
-                    Console.WriteLine("Old name: {0}", existingName);
-                    Console.WriteLine("New name: {0}", newName);
+                    Console.WriteLine("Existing name: {0}", eventArgs.ExistingName);
+                    Console.WriteLine("New name: {0}", eventArgs.NewName);
                 })
             };
 
