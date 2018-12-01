@@ -10,9 +10,9 @@ namespace Grades
     {
         static void Main(string[] args)
         {
-            GradeBook gradeBook = new GradeBook();
+            GradeBook gradeBook = new GradeBook("The Graduator");
 
-            while(true)
+            while (true)
             {
                 Console.Write("Enter a grade between 0 and 100 or write 'quit' to exit: ");
                 string answer = Console.ReadLine();
@@ -33,7 +33,9 @@ namespace Grades
                     }
                 }
             }
+
             GradeStatistics stats = gradeBook.ComputeGrades();
+
             Console.WriteLine("Max grade is {0}", stats.MaxGrade);
             Console.WriteLine("Min grade is {0}", stats.MinGrade);
             Console.WriteLine("Average grade is {0}", stats.AverageGrade);
