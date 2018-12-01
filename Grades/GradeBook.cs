@@ -8,7 +8,9 @@ namespace Grades
 {
     class GradeBook
     {
-        private string _name = String.Empty;
+        public NameChangedDelegate NameChanged;
+
+        private string _name = "No name yet!";
         public static float MAX_GRADE = 100.0f;
         public static float MIN_GRADE = 0.0f;
 
@@ -39,7 +41,12 @@ namespace Grades
            set { 
                 if(!string.IsNullOrEmpty(value))
                 {
-                    Name = value;
+                    if(_name != value)
+                    {
+                        NameChanged(_name, value);
+                    }
+
+                    _name = value;
                 }
             } 
         }
