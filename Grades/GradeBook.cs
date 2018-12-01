@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,6 +83,14 @@ namespace Grades
         public void AddGrade(float gradeValue)
         {
             grades.Add(gradeValue);
+        }
+
+        public void WriteGrades(TextWriter textWriter)
+        {
+            foreach (var item in grades)
+            {
+                textWriter.WriteLine(item);
+            }
         }
     }
 }

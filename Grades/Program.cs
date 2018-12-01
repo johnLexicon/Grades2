@@ -52,6 +52,9 @@ namespace Grades
             Console.WriteLine("Average grade is {0}", stats.AverageGrade);
             Console.WriteLine("Letter grade is {0}", stats.LetterGrade);
             Console.WriteLine("Grade description: {0}", stats.Description);
+
+            Console.WriteLine();
+            gradeBook.WriteGrades(Console.Out);
         }
     }
 }
