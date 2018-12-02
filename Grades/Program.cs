@@ -12,7 +12,7 @@ namespace Grades
 
         static void Main(string[] args)
         {
-            GradeBook gradeBook = new GradeBook("The graduator")
+            GradeTracker gradeBook = new GradeBook("The graduator")
             {
                 NameChanged = new NameChangedDelegate((gb, eventArgs) =>
                 {
@@ -50,7 +50,7 @@ namespace Grades
             WriteInfo(gradeBook, stats);
         }
 
-        private static void WriteInfo(GradeBook gradeBook, GradeStatistics stats)
+        private static void WriteInfo(GradeTracker gradeBook, GradeStatistics stats)
         {
             Console.WriteLine("Max grade is {0}", stats.MaxGrade);
             Console.WriteLine("Min grade is {0}", stats.MinGrade);

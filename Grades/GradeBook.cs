@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace Grades
 {
-    class GradeBook
+    class GradeBook : GradeTracker
     {
-        public NameChangedDelegate NameChanged;
 
-        private string _name = "No name yet!";
         public static float MAX_GRADE = 100.0f;
         public static float MIN_GRADE = 0.0f;
 
@@ -22,7 +20,7 @@ namespace Grades
             _name = name;
         }
 
-        public GradeStatistics ComputeGrades()
+        public override GradeStatistics ComputeGrades()
         {
             var stats = new GradeStatistics
             {
@@ -31,36 +29,6 @@ namespace Grades
                 AverageGrade = GetAverage()
             };
             return stats;
-        }
-
-        public string Name { 
-
-            get {
-                return _name;
-            }
-           
-           set { 
-
-                if(string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Name cannot be null or empty.");
-                }
-
-                if (_name != value)
-                {
-
-                    var args = new NameChangedEventArgs
-                    {
-                        ExistingName = _name,
-                        NewName = value
-                    };
-
-                    NameChanged(this, args);
-                }
-
-                _name = value;
-
-            } 
         }
 
         private float? GetMaxGrade()
@@ -84,12 +52,12 @@ namespace Grades
             return null;
         }
 
-        public void AddGrade(float gradeValue)
+        public override void AddGrade(float gradeValue)
         {
             grades.Add(gradeValue);
         }
 
-        public void WriteGrades(TextWriter textWriter)
+        public override void WriteGrades(TextWriter textWriter)
         {
             foreach (var item in grades)
             {
