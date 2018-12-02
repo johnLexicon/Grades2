@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 
 namespace Grades
 {
-    public abstract class GradeTracker
+    public abstract class GradeTracker : IGradeTracker
     {
 
         public NameChangedDelegate NameChanged;
@@ -45,5 +46,6 @@ namespace Grades
         public abstract void AddGrade(float gradeValue);
         public abstract GradeStatistics ComputeGrades();
         public abstract void WriteGrades(TextWriter textWriter);
+        public abstract IEnumerator GetEnumerator();
     }
 }

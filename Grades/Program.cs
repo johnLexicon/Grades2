@@ -60,6 +60,10 @@ namespace Grades
 
             Console.WriteLine();
 
+            foreach(float grade in gradeBook)
+            {
+                Console.WriteLine(grade);
+            }
 
             using (StreamWriter writer = File.CreateText("/Users/johnlundgren/grades"))
             {
