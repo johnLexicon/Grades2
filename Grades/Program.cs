@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,14 +28,14 @@ namespace Grades
             {
                 Console.Write("Enter a grade between 0 and 100 or write 'quit' to exit: ");
                 string answer = Console.ReadLine();
-                if(answer.Equals("quit"))
+                if (answer.Equals("quit"))
                 {
                     break;
                 }
                 else
                 {
                     float gradeValue = float.Parse(answer);
-                    if(gradeValue < GradeBook.MIN_GRADE || gradeValue > GradeBook.MAX_GRADE)
+                    if (gradeValue < GradeBook.MIN_GRADE || gradeValue > GradeBook.MAX_GRADE)
                     {
                         Console.WriteLine("Grade value outside grade interval");
                     }
@@ -46,7 +47,11 @@ namespace Grades
             }
 
             GradeStatistics stats = gradeBook.ComputeGrades();
+            WriteInfo(gradeBook, stats);
+        }
 
+        private static void WriteInfo(GradeBook gradeBook, GradeStatistics stats)
+        {
             Console.WriteLine("Max grade is {0}", stats.MaxGrade);
             Console.WriteLine("Min grade is {0}", stats.MinGrade);
             Console.WriteLine("Average grade is {0}", stats.AverageGrade);
@@ -54,7 +59,13 @@ namespace Grades
             Console.WriteLine("Grade description: {0}", stats.Description);
 
             Console.WriteLine();
-            gradeBook.WriteGrades(Console.Out);
+
+
+            using (StreamWriter writer = File.CreateText("/Users/johnlundgren/grades"))
+            {
+                gradeBook.WriteGrades(writer);
+            }
+
         }
     }
 }
